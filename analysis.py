@@ -12,8 +12,18 @@ df.drop('Id', axis=1, inplace=True)
 print(df.head(), '\n')
 print(df.isna().sum(), '\n')
 
-fig, ax = plt.subplots(figsize=(10, 8))
-sns.heatmap(df.corr(), cmap='magma', annot=True, ax=ax)
+fig, ax = plt.subplots(figsize=(15, 15))
+sns.heatmap(df.corr(), cmap='magma', annot=True)
 ax.set_title('Correlation Matrix of Dataset', fontsize=15)
 
 plt.show()
+
+for i in df.columns:
+    plt.figure(figsize=(10, 4))
+    plt.title(f'{i} hist plot')
+    plt.subplot(1, 3, 1)
+    df[i].plot(kind='hist')
+    plt.savefig(f'analysis_plots/{i} hist plot.pdf')
+    
+plt.close()
+print(df.describe())
