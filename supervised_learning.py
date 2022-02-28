@@ -15,11 +15,14 @@ print("x head:\n", x.head(), "\n")
 print("y head:\n", y.head(), "\n")
 
 model = LinearRegression()
+print("Création du model")
+
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=101)
 model.fit(x_train,y_train)
+print("Entraînement du model\n")
 
 predictions = model.predict(x_test)
-
-print('MAE:', metrics.mean_absolute_error(y_test, predictions))
-print('MSE:', metrics.mean_squared_error(y_test, predictions))
-print('RMSE:', np.sqrt(metrics.mean_squared_error(y_test, predictions)))
+print("Prediction à partir du jeu de test:")
+print('Mean absolute error =', metrics.mean_absolute_error(y_test, predictions))
+print('Mean squared error =', metrics.mean_squared_error(y_test, predictions))
+print('Root mean squared error =', np.sqrt(metrics.mean_squared_error(y_test, predictions)))
