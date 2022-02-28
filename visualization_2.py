@@ -4,9 +4,9 @@ import plotly.express as px
 df = pd.read_csv("Wine.csv")
 
 print('Choose three different features of the dataset (between fixed acidity, volatile acidity, citric acid, residual sugar, chlorides, free sulfur dioxide, total sulfur dioxide, density, pH, sulphates, alcohol)')
-first_value = input("First value : ")
-second_value = input("Second value : ")
-third_value = input("Third value : ")
+first_value = input("First parameter : ")
+second_value = input("Second parameter : ")
+third_value = input("Third parameter : ")
 
 range = input("\nChoose range of point of the dataset (between 0 and 1143): ")
 
@@ -20,11 +20,13 @@ if (second_value and ((second_value == 'fixed acidity') or (second_value == 'vol
 else:
     second_value = 'residual sugar'
 
+
 if (third_value and ((third_value == 'fixed acidity') or (third_value == 'volatile acidity') or (third_value == 'citric acid') or (third_value == 'residual sugar') or (third_value == 'chlorides') or (third_value == 'free sulfur dioxide') or (third_value == 'total sulfur dioxide') or (third_value == 'density') or (third_value == 'pH') or (third_value == 'sulphates') or (third_value == 'quality'))):
     if ((third_value == first_value) or (third_value == second_value)):
         third_value = 'alcohol'
 else:
     third_value = 'alcohol'
+
 
 if (range and range.isdigit()):
     if (int(range) < 0 or int(range) >= 1144):
