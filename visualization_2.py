@@ -1,7 +1,7 @@
 import pandas as pd
 import plotly.express as px
 
-df = pd.read_csv("Wine.csv")
+df = pd.read_csv("data.csv")
 
 print('Choose three different features of the dataset (between fixed acidity, volatile acidity, citric acid, residual sugar, chlorides, free sulfur dioxide, total sulfur dioxide, density, pH, sulphates, alcohol)')
 first_value = input("First parameter : ")

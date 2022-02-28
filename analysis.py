@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-df = pd.read_csv("Wine.csv")
+df = pd.read_csv("data.csv")
 print(df.head(), '\n')
 
 df.dropna(inplace=True)

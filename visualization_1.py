@@ -1,14 +1,15 @@
+from tkinter import XView
 import pandas as pd
+from pandas.plotting import scatter_matrix
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-df = pd.read_csv("Wine.csv")
+df = pd.read_csv("data.csv")
+df = df.drop('Id', axis=1)
 
-x_value = input("Choose one feature of the dataset (between fixed acidity, volatile acidity, citric acid, residual sugar, chlorides, free sulfur dioxide, total sulfur dioxide, density, pH, sulphates, quality): ")
-range = input("Choose range of point of the dataset (between 0 and 1143): ")
-
-if ((x_value != 'fixed acidity') and (x_value != 'volatile acidity') and (x_value != 'citric acid') and (x_value != 'residual sugar') and (x_value != 'chlorides') and (x_value != 'free sulfur dioxide') and (x_value != 'total sulfur dioxide') and (x_value != 'density') and (x_value != 'pH') and (x_value != 'sulphates') and (x_value != 'quality')):
-    x_value = 'density'
+x_value = input("Choose the parameters on the x axis from fixed acidity, volatile acidity, citric acid, residual sugar, chlorides, free sulfur dioxide, total sulfur dioxide, density, pH, sulphates, quality: ")
+y_value = input("Choose the parameters on the y axis from fixed acidity, volatile acidity, citric acid, residual sugar, chlorides, free sulfur dioxide, total sulfur dioxide, density, pH, sulphates, quality: ")
+range = input("Choose range of point of the dataset between 0 and 1143: ")
 
 if (range and range.isdigit()):
     if (int(range) < 0 or int(range) >= 1144):
@@ -16,7 +17,15 @@ if (range and range.isdigit()):
 else:
     range = '1143'
 
-fig, ax = plt.subplots(figsize=(9, 6))
-sns.scatterplot(x=x_value, y='quality', data=df.sample(int(range)))
+if (x_value and y_value):
+    if ((x_value != 'fixed acidity') and (x_value != 'volatile acidity') and (x_value != 'citric acid') and (x_value != 'residual sugar') and (x_value != 'chlorides') and (x_value != 'free sulfur dioxide') and (x_value != 'total sulfur dioxide') and (x_value != 'density') and (x_value != 'pH') and (x_value != 'sulphates') and (x_value != 'quality')):
+        x_value = 'alcohol'
+    if ((y_value != 'fixed acidity') and (y_value != 'volatile acidity') and (y_value != 'citric acid') and (y_value != 'residual sugar') and (y_value != 'chlorides') and (y_value != 'free sulfur dioxide') and (y_value != 'total sulfur dioxide') and (y_value != 'density') and (y_value != 'pH') and (y_value != 'sulphates') and (y_value != 'alcohol')):
+        y_value = 'quality'
+    
+    sns.scatterplot(x=x_value, y=y_value, data=df.sample(int(range)))
+else:
+    df = df.rename(columns={"fixed acidity": "fix acd", "volatile acidity": "vlti acd", "citric acid": "citr acd", "residual sugar": "resid sgr", "chlorides": "chlor", "free sulfur dioxide": "free sf dx", "total sulfur dioxide": "total sf dx", "density": "dens", "sulphates": "sulpha", "alcohol": "alcl", "quality": "qual"})
+    scatter_matrix(df.sample(int(range)), figsize=(40,30))
 
 plt.show()

@@ -4,7 +4,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn import metrics
 
-df = pd.read_csv("Wine.csv")
+df = pd.read_csv("data.csv")
 print("Dataframe head:\n", df.head(), "\n")
 
 df = df.drop('Id', axis=1)
