@@ -17,6 +17,6 @@ else:
     range = '1143'
 
 fig, ax = plt.subplots(figsize=(9, 6))
-sns.scatterplot(x=x_value, y='alcohol', data=df.sample(int(range)))
+sns.scatterplot(x=x_value, y='quality', data=df.sample(int(range)))
 
 plt.show()
