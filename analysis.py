@@ -23,6 +23,7 @@ for i in df.columns:
     plt.title(f'{i} hist plot')
     plt.subplot(1, 3, 1)
     df[i].plot(kind='hist')
+    plt.xlabel(f'{i}')
     plt.savefig(f'analysis_plots/{i} hist plot.pdf')
     
 plt.close()
