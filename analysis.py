@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -18,12 +19,14 @@ ax.set_title('Correlation Matrix of Dataset', fontsize=15)
 plt.show()
 
 for i in df.columns:
+    mean = sum(df[i] / len(df[i]))
+    standard_deviation = np.std(df[i])
     plt.figure(figsize=(10, 4))
-    plt.title(f'{i} hist plot')
     plt.subplot(1, 3, 1)
+
     df[i].plot(kind='hist')
+    plt.title(f'{i} histogram plot: $\mu = {round(mean, 2)}$ $\sigma = {round(standard_deviation, 2)}$ \n')
     plt.xlabel(f'{i}')
-    plt.savefig(f'analysis_plots/{i} hist plot.pdf')
+    plt.savefig(f'analysis_plots/{i} histogram plot.pdf')
     
 plt.close()
-print(df.describe())
