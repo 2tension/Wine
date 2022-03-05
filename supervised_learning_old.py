@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn import metrics
 
@@ -14,8 +14,9 @@ y = df['quality']
 print("x head:\n", x.head(), "\n")
 print("y head:\n", y.head(), "\n")
 
-model = LinearRegression()
+
 print("Création du model")
+model = LogisticRegression(random_state=0, solver='lbfgs', max_iter=100000)
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=101)
 
