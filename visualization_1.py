@@ -23,9 +23,10 @@ if (x_value and y_value):
     if ((y_value != 'fixed acidity') and (y_value != 'volatile acidity') and (y_value != 'citric acid') and (y_value != 'residual sugar') and (y_value != 'chlorides') and (y_value != 'free sulfur dioxide') and (y_value != 'total sulfur dioxide') and (y_value != 'density') and (y_value != 'pH') and (y_value != 'sulphates') and (y_value != 'alcohol')):
         y_value = 'quality'
     
-    sns.scatterplot(x=x_value, y=y_value, data=df.sample(int(range)))
+    sns.regplot(x=x_value, y=y_value, data=df.sample(int(range)), line_kws={"color": "red"}).set(title='Scatter plot and regression line of ' + x_value + ' by ' + y_value)
 else:
     df = df.rename(columns={"fixed acidity": "fix acd", "volatile acidity": "vlti acd", "citric acid": "citr acd", "residual sugar": "resid sgr", "chlorides": "chlor", "free sulfur dioxide": "free sf dx", "total sulfur dioxide": "total sf dx", "density": "dens", "sulphates": "sulpha", "alcohol": "alcl", "quality": "qual"})
     scatter_matrix(df.sample(int(range)), figsize=(40,30))
+    plt.suptitle('Matrix of scatter plots')
 
 plt.show()
