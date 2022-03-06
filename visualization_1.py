@@ -7,12 +7,15 @@ import seaborn as sns
 df = pd.read_csv("data.csv")
 df = df.drop('Id', axis=1)
 
-x_value = input("Choose the parameters on the x axis from fixed acidity, volatile acidity, citric acid, residual sugar, chlorides, free sulfur dioxide, total sulfur dioxide, density, pH, sulphates, quality: ")
-y_value = input("Choose the parameters on the y axis from fixed acidity, volatile acidity, citric acid, residual sugar, chlorides, free sulfur dioxide, total sulfur dioxide, density, pH, sulphates, quality: ")
+print('Choose two different features of the dataset for the x and y axis :\n- fixed acidity\n- volatile acidity\n- citric acid\n- residual sugar\n- chlorides\n- free sulfur dioxide\n- total sulfur dioxide\n- density\n- pH\n- sulphates\n- alcohol\n- quality\n')
+x_value = input("X axis : ")
+y_value = input("Y axis : ")
+
+#y_value = input("hoose the parameters on the y axis from fixed acidity, volatile acidity, citric acid, residual sugar, chlorides, free sulfur dioxide, total sulfur dioxide, density, pH, sulphates, alcohol, quality: ")
 range = input("Choose range of point of the dataset between 0 and 1143: ")
 
 if (range and range.isdigit()):
-    if (int(range) < 0 or int(range) >= 1144):
+    if (int(range) < 1 or int(range) >= 1144):
         range = '1143'
 else:
     range = '1143'

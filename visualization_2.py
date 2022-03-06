@@ -3,12 +3,12 @@ import plotly.express as px
 
 df = pd.read_csv("data.csv")
 
-print('Choose three different features of the dataset (between fixed acidity, volatile acidity, citric acid, residual sugar, chlorides, free sulfur dioxide, total sulfur dioxide, density, pH, sulphates, alcohol)')
+print('Choose three different features of the dataset :\n- fixed acidity\n- volatile acidity\n- citric acid\n- residual sugar\n- chlorides\n- free sulfur dioxide\n- total sulfur dioxide\n- density\n- pH\n- sulphates\n- alcohol\n')
 first_value = input("First parameter : ")
 second_value = input("Second parameter : ")
 third_value = input("Third parameter : ")
 
-range = input("\nChoose range of point of the dataset (between 0 and 1143), by default 200: ")
+range = input("Choose range of point of the dataset (between 0 and 1143), by default 200: ")
 
 if (range and range.isdigit()):
     if (int(range) < 0 or int(range) >= 1144):
