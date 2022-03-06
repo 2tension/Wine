@@ -45,9 +45,11 @@ if (first_value and second_value and third_value):
     df_pc[third_value] = df[third_value].copy()
     df_pc["quality"] = df["quality"].copy()
 
-    fig = px.parallel_coordinates(df_pc, color='quality', color_continuous_scale=px.colors.diverging.Tealrose, color_continuous_midpoint=5.5)
+    fig = px.parallel_coordinates(df_pc, color='quality', color_continuous_scale=px.colors.diverging.Tealrose, color_continuous_midpoint=5.5, title="Parallel coordinates plot for the wine data")
+    fig.update_layout(font=dict(family="Courier New, monospace", size=16, color="Black"))
     fig.show()
 
 else:
-    fig = px.parallel_coordinates(df, color='quality', color_continuous_scale=px.colors.diverging.Tealrose, color_continuous_midpoint=5.5)
+    fig = px.parallel_coordinates(df, color='quality', color_continuous_scale=px.colors.diverging.Tealrose, color_continuous_midpoint=5.5, title="Parallel coordinates plot for the wine data")
+    fig.update_layout(font=dict(family="Courier New, monospace", size=16, color="Black"))
     fig.show()
