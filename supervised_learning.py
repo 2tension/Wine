@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn import metrics
 
@@ -15,16 +15,13 @@ print("x head:\n", x.head(), "\n")
 print("y head:\n", y.head(), "\n")
 
 print("Model creation")
-model = LinearRegression()
+model = LogisticRegression(random_state=0, solver='lbfgs', max_iter=8000)
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=101)
 
 print("Model training")
 model.fit(x_train,y_train)
-print("\n")
 
 predictions = model.predict(x_test)
-print("Prediction from the test set:")
-print('Mean absolute error =', metrics.mean_absolute_error(y_test, predictions))
-print('Mean squared error =', metrics.mean_squared_error(y_test, predictions))
-print('Root mean squared error =', np.sqrt(metrics.mean_squared_error(y_test, predictions)))
+lr_acc_score = metrics.accuracy_score(y_test, predictions)
+print("\nAccuracy_score = ", int(lr_acc_score*100), "%")
